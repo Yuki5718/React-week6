@@ -12,7 +12,6 @@ export default function Home() {
   const [ isAuth , setIsAuth ] = useState(false)
 
   const { id : pageId } = useParams()
-  // console.log(pageId)
 
   const navigate = useNavigate()
 
@@ -24,7 +23,6 @@ export default function Home() {
       const { success , uid } = res.data
       // 取得cookie UID
       const cookie_uid = document.cookie.replace(/(?:(?:^|.*;\s*)uid\s*\=\s*([^;]*).*$)|^.*$/,"$1",);
-      console.log("success" , success)
       if (success) {
         if (uid !== cookie_uid) {
           document.cookie = `uid=${uid};`; 
@@ -61,7 +59,6 @@ export default function Home() {
         checkLogined()
       }
     } else {
-      console.log("無TOKEN")
       document.cookie = 'uid=; max-age=0';
       setIsAuth(false)
       if (pageId !== undefined) {
